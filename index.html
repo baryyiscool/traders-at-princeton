@@ -206,7 +206,7 @@ section, header.hero { scroll-margin-top: 72px; }
 .member { display: grid; gap: 10px; text-align: center; }
 .avatar { aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--bg-2); border: 2px dashed var(--line); display: grid; place-items: center; color: var(--ink-2); font-size: 12px; font-family: var(--font-mono); }
 .avatar.initials { border-style: solid; font-family: var(--font-display); font-weight: 800; font-size: 44px; color: var(--ink); background: var(--accent-soft); border-color: transparent; }
-img.avatar { width: 100%; object-fit: cover; border-style: solid; display: block; }
+img.avatar { width: 100%; height: auto; object-fit: cover; border: 0; display: block; }
 .member b { font-family: var(--font-display); font-size: 17px; font-weight: 700; }
 .member span { font-size: 13px; color: var(--ink-2); display: block; }
 
@@ -537,8 +537,8 @@ footer .disc { max-width: 70ch; }
       <p class="ph">[One line about the board and how to reach them.]</p>
     </div>
     <div class="team">
-      <div class="member"><div class="avatar initials" aria-hidden="true">DJ</div><b>David Ji</b><span>Co-President</span></div>
-      <div class="member"><div class="avatar initials" aria-hidden="true">TK</div><b>Taeyoung Kang</b><span>Co-President</span></div>
+      <div class="member"><img class="avatar" src="team/david.jpg" alt="David Ji" width="480" height="480" loading="lazy"><b>David Ji</b><span>Co-President</span></div>
+      <div class="member"><img class="avatar" src="team/taeyoung.jpg" alt="Taeyoung Kang" width="480" height="480" loading="lazy"><b>Taeyoung Kang</b><span>Co-President</span></div>
     </div>
   </div>
 </section>

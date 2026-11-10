@@ -7,7 +7,6 @@ The site is a single static page: `index.html` holds all the content, styles, an
 
 1. Open `index.html` in any text editor. All copy is plain HTML in the page body.
 2. Team: each person is one `<div class="member">` line. Put a square-ish photo in `team/` and point the `<img>` at it.
-3. Events: each event is one `<article class="event">`. Replace `TBA` with the day and `Date` with the month once dates are set.
 4. Sponsors: when a firm signs, replace a "Your logo here" box in the founding sponsors wall with its logo.
 5. The "Open the interest form" button in the Recruitment section links to a Google Form. Responses collect in the Google Sheet linked from the form's Responses tab. To change the questions, edit the form in Google Forms; the link stays the same.
 6. Commit and push to `main`. GitHub Pages redeploys within a minute or two.

@@ -14,8 +14,8 @@ The site is a single static page: `index.html` holds all the content, styles, an
 
 ## What's on the page
 
-- **Order book** in the hero. It is a simulation in the script at the bottom of `index.html`, and visitors can trade it with the Buy and Sell buttons.
-- **Make a market** game. The questions live in the `QUESTIONS` array in the same script. Each one needs a question, a fair value, a unit, and a one-line explanation.
+- **Look and tone.** Deliberately restrained: a single dark theme, a serif display face, hairline rules, and formal copy. Keep new sections in that voice.
+- **Order book** in the hero. It is a simulation in the script at the bottom of `index.html`, with small Buy and Sell buttons that trade against it.
 - **Internships band** under the hero: a dark ticker of firm logos shown in white. Logos live in `logos/`. Add a firm by adding its `<li>` to each of the four repeated groups, with a transparent-background logo. The files came from Wikimedia Commons; the IMC file is CC BY-SA 4.0 and is credited in the footer.
 - **Announcement bar** at the very top. Edit or delete the `<div class="announce">` block.
 

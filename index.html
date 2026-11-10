@@ -6,6 +6,11 @@
 <title>Traders @ Princeton</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Traders @ Princeton is a student-run quantitative trading club: a student-managed fund, interview prep, and internal trading competitions.">
+<meta name="theme-color" content="#10132A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Traders @ Princeton">
+<meta property="og:description" content="A student-run quantitative trading club: a student-managed fund, interview prep, and internal trading games.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310132A'/%3E%3Ctext x='32' y='46' font-family='Arial,sans-serif' font-size='42' font-weight='700' text-anchor='middle' fill='%23FF6A1F'%3E@%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
@@ -20,7 +25,8 @@
   --ink-2: #5A5F7A;
   --line: #DEE1EE;
   --accent: #FF6A1F;
-  --accent-ink: #FFFFFF;
+  --accent-text: #D9480F;
+  --accent-ink: #10132A;
   --accent-soft: #FFE6D8;
   --bid: #19A65E;
   --ask: #E9453C;
@@ -38,14 +44,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0C0E1A; --bg-2: #12152A; --panel: #151933; --ink: #EEF0F9; --ink-2: #A0A6C2;
-    --line: #262B45; --accent: #FF7A33; --accent-ink: #14100C; --accent-soft: #3A2316;
+    --line: #262B45; --accent: #FF7A33; --accent-text: #FF7A33; --accent-ink: #14100C; --accent-soft: #3A2316;
     --bid: #2DC174; --ask: #F2574E; --shadow: 0 10px 30px rgba(0,0,0,.35);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0C0E1A; --bg-2: #12152A; --panel: #151933; --ink: #EEF0F9; --ink-2: #A0A6C2;
-  --line: #262B45; --accent: #FF7A33; --accent-ink: #14100C; --accent-soft: #3A2316;
+  --line: #262B45; --accent: #FF7A33; --accent-text: #FF7A33; --accent-ink: #14100C; --accent-soft: #3A2316;
   --bid: #2DC174; --ask: #F2574E; --shadow: 0 10px 30px rgba(0,0,0,.35);
   color-scheme: dark;
 }
@@ -74,12 +80,30 @@ a { color: inherit; }
 .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 64px; }
 .brand { font-family: var(--font-display); font-weight: 800; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 2px; white-space: nowrap; }
-.brand .at { color: var(--accent); display: inline-block; transform: rotate(-12deg); font-size: 1.2em; margin: 0 2px; transition: transform .3s; }
+.brand .at { color: var(--accent-text); display: inline-block; transform: rotate(-12deg); font-size: 1.2em; margin: 0 2px; transition: transform .3s; }
 .brand:hover .at { transform: rotate(348deg); }
 .nav-links { display: flex; gap: 22px; margin-left: auto; list-style: none; padding: 0; margin-block: 0; }
 .nav-links a { text-decoration: none; font-weight: 500; color: var(--ink-2); font-size: 15px; }
 .nav-links a:hover { color: var(--ink); }
-@media (max-width: 860px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
+.nav-links a.active { color: var(--ink); }
+.nav-cta-item { display: none; }
+.menu-btn { display: none; width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--ink); background: var(--panel); color: var(--ink); cursor: pointer; align-items: center; justify-content: center; padding: 0; flex: none; }
+@media (max-width: 860px) {
+  .nav .wrap { gap: 12px; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; margin: 0; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+    padding: 4px max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 13px 0; font-size: 17px; border-bottom: 1px solid var(--line); }
+  .nav-links li:last-child a { border-bottom: 0; }
+  .nav .wrap > .btn { margin-left: auto; }
+  .menu-btn { display: inline-flex; }
+}
+@media (max-width: 480px) {
+  .nav .wrap > .btn { display: none; }
+  .menu-btn { margin-left: auto; }
+  .nav-cta-item { display: block; }
+  .nav-links .nav-cta-item a { color: var(--accent-text); font-weight: 700; }
+}
 
 /* Buttons */
 .btn {
@@ -100,7 +124,7 @@ a { color: inherit; }
 .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); display: inline-flex; align-items: center; gap: 10px; }
 .eyebrow::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
 .hero h1 { font-size: clamp(40px, 6.2vw, 72px); font-weight: 800; margin-top: 18px; }
-.hero h1 .mark { color: var(--accent); }
+.hero h1 .mark { color: var(--accent-text); }
 .hero .lede { margin-top: 20px; font-size: 19px; color: var(--ink-2); max-width: 52ch; }
 .hero .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
 .hero-note { margin-top: 16px; font-size: 13px; color: var(--ink-2); }
@@ -163,14 +187,16 @@ section { padding-block: 80px; }
 @media (max-width: 760px) { section { padding-block: 56px; } }
 .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
 .sec-head h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 700; }
-.tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); display: inline-block; margin-bottom: 12px; }
+.tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.tag::before { content: ""; width: 8px; height: 8px; background: var(--accent); transform: rotate(45deg); border-radius: 1px; }
+section, header.hero { scroll-margin-top: 72px; }
 .sec-head p { color: var(--ink-2); max-width: 46ch; }
 
 /* About pillars */
 .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .pillar { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: grid; gap: 12px; align-content: start; min-width: 0; transition: transform .2s, box-shadow .2s; }
 .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.pillar .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.pillar .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent-text); display: grid; place-items: center; }
 .pillar h3 { font-size: 22px; font-weight: 700; }
 .pillar p { color: var(--ink-2); font-size: 15px; }
 @media (max-width: 860px) { .pillars { grid-template-columns: 1fr; } }
@@ -231,6 +257,71 @@ section { padding-block: 80px; }
 .socials a span { color: color-mix(in srgb, var(--bg) 60%, transparent); font-family: var(--font-mono); font-size: 12px; }
 @media (max-width: 860px) { .contact { grid-template-columns: 1fr; padding: 32px 24px; } }
 
+/* Announcement bar */
+.announce { background: var(--accent-soft); color: var(--ink); font-size: 14px; }
+.announce .wrap { display: flex; align-items: center; justify-content: center; gap: 4px 14px; flex-wrap: wrap; padding-block: 9px; text-align: center; }
+.announce a { color: var(--ink); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; white-space: nowrap; }
+.announce .ph { color: inherit; opacity: .7; }
+
+/* Trading desk under the order book */
+.desk { margin-top: 10px; border-top: 1px solid var(--term-line); padding-top: 10px; display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; }
+.desk-title { flex-basis: 100%; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--term-muted); }
+.tbtn { font: inherit; font-weight: 600; font-size: 12px; padding: 9px 14px; border-radius: 8px; border: 0; cursor: pointer; color: var(--term-bg); transition: transform .1s, filter .15s; }
+.tbtn:hover { filter: brightness(1.12); }
+.tbtn:active { transform: scale(.95); }
+.tbtn.buy { background: var(--bid); }
+.tbtn.sell { background: var(--ask); }
+.desk .pos { color: var(--term-muted); font-size: 12px; }
+.desk .pos:first-of-type { margin-left: auto; }
+.desk .pos b { color: var(--term-ink); font-weight: 600; margin-left: 4px; }
+.desk .pos b.up { color: var(--bid); }
+.desk .pos b.down { color: var(--ask); }
+.tape .you { color: #FF8A4C; }
+
+/* Sponsor marquee */
+.marquee { overflow: hidden; border-top: 1px solid var(--line); padding-block: 14px; }
+.marquee-track { display: flex; width: max-content; align-items: center; animation: marquee 45s linear infinite; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.marquee-track > * { margin-right: 28px; white-space: nowrap; }
+.marquee-track i { font-style: normal; color: var(--accent-text); }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Make-a-market game */
+.game { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: stretch; }
+.game-card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.game-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.game-q { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px); font-weight: 700; line-height: 1.2; text-wrap: balance; }
+.quote { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.quote label { display: grid; gap: 6px; flex: 1 1 110px; min-width: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+.quote input { width: 100%; font: 600 20px var(--font-mono); font-variant-numeric: tabular-nums; padding: 12px 14px; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
+.quote input:focus-visible { outline: none; border-color: var(--ink); }
+.quote #bidIn { border-bottom-color: var(--bid); }
+.quote #askIn { border-bottom-color: var(--ask); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: 3px 3px 0 var(--ink); }
+.game-out { border-radius: 14px; padding: 16px 18px; background: var(--bg-2); font-size: 15px; min-height: 92px; }
+.game-out b { display: block; font-family: var(--font-display); font-size: 18px; margin-bottom: 4px; }
+.game-out.win b { color: var(--bid); }
+.game-out.lose b { color: var(--ask); }
+.game-out .why-line { display: block; margin-top: 6px; color: var(--ink-2); font-size: 14px; }
+.game-side { background: var(--term-bg); color: var(--term-ink); border: 1px solid var(--term-line); border-radius: 18px; padding: 28px; display: grid; gap: 16px; align-content: start; font-family: var(--font-mono); font-size: 13px; min-width: 0; }
+.game-side h3 { font-size: 20px; }
+.game-side ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--term-muted); }
+.score { display: flex; gap: 12px 28px; flex-wrap: wrap; border-top: 1px solid var(--term-line); padding-top: 16px; }
+.score div { display: grid; gap: 2px; }
+.score span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--term-muted); }
+.score b { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .game { grid-template-columns: 1fr; } .game-card, .game-side { padding: 22px; } }
+
+/* Small additions */
+.plink { font-weight: 600; font-size: 15px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 4px; justify-self: start; }
+.etag { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); background: var(--accent-soft); padding: 3px 9px; border-radius: 999px; margin-bottom: 8px; }
+.sponsor-cta { margin-top: 32px; display: flex; align-items: center; gap: 14px 20px; flex-wrap: wrap; }
+.wall-title { margin-top: 56px; font-size: 22px; font-weight: 700; }
+.wall-title + .logos { margin-top: 18px; }
+.contact .emails { display: grid; gap: 16px; margin-top: 24px; }
+.contact .emails .email { margin-top: 0; }
+.contact .elabel { flex-basis: 100%; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+
 footer { padding-block: 32px 48px; color: var(--ink-2); font-size: 13px; }
 footer .wrap { display: grid; gap: 10px; }
 footer .disc { max-width: 70ch; }
@@ -238,24 +329,31 @@ footer .disc { max-width: 70ch; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .row.flash-up, .row.flash-down, .tape li:first-child, .term-live i { animation: none; }
-  .row .bar, .brand .at, .pillar, .btn { transition: none; }
+  .row .bar, .brand .at, .pillar, .btn, .tbtn { transition: none; }
+  .marquee-track { animation: none; }
 }
 </style>
 </head>
 <body>
 
+<div class="announce">
+  <div class="wrap"><span>Now meeting founding sponsors for <span class="ph">[semester]</span>.</span><a href="#sponsors">See sponsorship</a></div>
+</div>
+
 <nav class="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Traders at Princeton, home">Traders<span class="at">@</span>Princeton</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="#recruitment">Recruitment</a></li>
-      <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li class="nav-cta-item"><a href="#sponsors">Sponsor us</a></li>
     </ul>
     <a class="btn btn-accent btn-sm" href="#sponsors">Sponsor us</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </nav>
 
@@ -272,7 +370,7 @@ footer .disc { max-width: 70ch; }
       <p class="hero-note">Founded <span class="ph">[year]</span> · <span class="ph">[N]</span> members · Independent student organization</p>
     </div>
 
-    <div class="term" aria-label="Simulated order book for a fictional ticker" role="img">
+    <div class="term" role="group" aria-label="Simulated order book for a fictional ticker. The buy and sell buttons trade against it.">
       <div class="term-head">
         <span class="term-sym">TAP<small>Traders @ Princeton · Sim</small></span>
         <span class="term-live"><i></i>LIVE</span>
@@ -295,9 +393,22 @@ footer .disc { max-width: 70ch; }
         <div class="tape-title">Time &amp; sales</div>
         <ul id="tape"></ul>
       </div>
+      <div class="desk">
+        <div class="desk-title">Your turn. Trade the book.</div>
+        <button class="tbtn sell" id="sellBtn" type="button">Sell 100</button>
+        <button class="tbtn buy" id="buyBtn" type="button">Buy 100</button>
+        <div class="pos">Pos<b id="pos">0</b></div>
+        <div class="pos">P&amp;L<b id="pnl">+0.00</b></div>
+      </div>
     </div>
   </div>
 </header>
+
+<div class="marquee" aria-label="Founding sponsor slots are open">
+  <div class="marquee-track" aria-hidden="true">
+    <span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i><span>Your firm here</span><i>◆</i><span>Founding sponsor slot open</span><i>◆</i>
+  </div>
+</div>
 
 <div class="strip">
   <div class="wrap">
@@ -324,6 +435,7 @@ footer .disc { max-width: 70ch; }
         <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="17" r="3"/></svg></div>
         <h3>Interview prep</h3>
         <p class="ph">[Probability, brainteasers, market-making games, mock interviews, and how often you meet.]</p>
+        <a class="plink" href="#play">Try a question</a>
       </article>
       <article class="pillar">
         <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M5 4h14v4a7 7 0 0 1-14 0z"/><path d="M5 6H3v2a3 3 0 0 0 3 3M19 6h2v2a3 3 0 0 1-3 3"/></svg></div>
@@ -334,62 +446,38 @@ footer .disc { max-width: 70ch; }
   </div>
 </section>
 
-<section id="team" style="background: var(--bg-2);">
+<section id="play" style="background: var(--bg-2);">
   <div class="wrap">
     <div class="sec-head">
-      <div><span class="tag">Team</span><h2>The people running it.</h2></div>
-      <p class="ph">[One line about the board and how to reach them.]</p>
+      <div><span class="tag">Try it</span><h2>Make a market.</h2></div>
+      <p>This is the kind of question we drill in interview prep. Quote a bid and an ask around the answer. Tight and right scores best. Wide is safe but pays little. Wrong gets picked off.</p>
     </div>
-    <div class="team">
-      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
-      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
-      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
-      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
-      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
-      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+    <div class="game">
+      <form class="game-card" id="gameForm" novalidate>
+        <div class="game-meta" id="gMeta">Question 1 of 6</div>
+        <p class="game-q" id="gQ">Loading question.</p>
+        <div class="quote">
+          <label for="bidIn">Your bid<input id="bidIn" type="number" inputmode="decimal" step="any" placeholder="0.00" autocomplete="off"></label>
+          <label for="askIn">Your ask<input id="askIn" type="number" inputmode="decimal" step="any" placeholder="0.00" autocomplete="off"></label>
+          <button class="btn btn-accent" id="quoteBtn" type="submit">Quote</button>
+        </div>
+        <div class="game-out" id="gOut" aria-live="polite"><b>Waiting on your market.</b>Enter two numbers, with the bid below the ask.</div>
+        <div><button class="btn btn-sm" id="nextBtn" type="button">Next question</button></div>
+      </form>
+      <aside class="game-side">
+        <h3>How it scores</h3>
+        <ol>
+          <li>Your market must contain the fair value, or we trade against you at your price.</li>
+          <li>If it does, you earn up to 100 points. The tighter the spread, the more you keep.</li>
+          <li>If it doesn't, you lose points in proportion to how far off your quote was.</li>
+        </ol>
+        <div class="score">
+          <div><span>Points</span><b id="scPts">0</b></div>
+          <div><span>Markets made</span><b id="scN">0</b></div>
+          <div><span>Picked off</span><b id="scBad">0</b></div>
+        </div>
+      </aside>
     </div>
-  </div>
-</section>
-
-<section id="events">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><span class="tag">Events</span><h2>What's coming up.</h2></div>
-      <p class="ph">[Where events are announced, e.g. mailing list or group chat.]</p>
-    </div>
-    <div class="events">
-      <article class="event">
-        <div class="date"><b class="ph">—</b><span class="ph">[mon]</span></div>
-        <div><h3 class="ph">[Event title]</h3><p class="ph">[Time · Location · Open to]</p></div>
-        <a class="btn btn-sm" href="#contact">RSVP</a>
-      </article>
-      <article class="event">
-        <div class="date"><b class="ph">—</b><span class="ph">[mon]</span></div>
-        <div><h3 class="ph">[Event title]</h3><p class="ph">[Time · Location · Open to]</p></div>
-        <a class="btn btn-sm" href="#contact">RSVP</a>
-      </article>
-      <article class="event">
-        <div class="date"><b class="ph">—</b><span class="ph">[mon]</span></div>
-        <div><h3 class="ph">[Event title]</h3><p class="ph">[Time · Location · Open to]</p></div>
-        <a class="btn btn-sm" href="#contact">RSVP</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="recruitment" style="background: var(--bg-2);">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><span class="tag">Recruitment</span><h2>How to join.</h2></div>
-      <p class="ph">[Who should apply, no experience required or not, and when the next cycle opens.]</p>
-    </div>
-    <div class="timeline">
-      <div class="step"><span class="when ph">[Date]</span><h3>Info session</h3><p class="ph">[Location and what to expect.]</p></div>
-      <div class="step"><span class="when ph">[Date]</span><h3>Applications open</h3><p class="ph">[Link to the form and what it asks.]</p></div>
-      <div class="step"><span class="when ph">[Date]</span><h3>Interviews</h3><p class="ph">[Format: a short chat, a trading game, or both.]</p></div>
-      <div class="step"><span class="when ph">[Date]</span><h3>Decisions</h3><p class="ph">[When new members hear back and onboarding.]</p></div>
-    </div>
-    <div style="margin-top: 36px;"><a class="btn" href="#contact">Join the interest list</a></div>
   </div>
 </section>
 
@@ -424,6 +512,11 @@ footer .disc { max-width: 70ch; }
         <a class="btn btn-sm" href="#contact">Get in touch</a>
       </article>
     </div>
+    <div class="sponsor-cta">
+      <a class="btn btn-accent" href="#contact">Request the sponsorship deck</a>
+      <span class="ph">[Link the PDF deck here once it exists.]</span>
+    </div>
+    <h3 class="wall-title">Founding sponsors</h3>
     <div class="logos">
       <div class="logo ph-box">Your logo here</div>
       <div class="logo ph-box">Your logo here</div>
@@ -435,13 +528,75 @@ footer .disc { max-width: 70ch; }
   </div>
 </section>
 
+<section id="team" style="background: var(--bg-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="tag">Team</span><h2>The people running it.</h2></div>
+      <p class="ph">[One line about the board and how to reach them.]</p>
+    </div>
+    <div class="team">
+      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+      <div class="member"><div class="avatar">[photo]</div><b class="ph">[Name]</b><span class="ph">[Role · Class year]</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="tag">Events</span><h2>What's coming up.</h2></div>
+      <p class="ph">[Where events are announced, e.g. mailing list or group chat.]</p>
+    </div>
+    <div class="events">
+      <article class="event">
+        <div class="date"><b class="ph">—</b><span class="ph">[mon]</span></div>
+        <div><span class="etag">Trading game</span><h3 class="ph">[Event title]</h3><p class="ph">[Time · Location · Open to]</p></div>
+        <a class="btn btn-sm" href="#contact">RSVP</a>
+      </article>
+      <article class="event">
+        <div class="date"><b class="ph">—</b><span class="ph">[mon]</span></div>
+        <div><span class="etag">Interview prep</span><h3 class="ph">[Event title]</h3><p class="ph">[Time · Location · Open to]</p></div>
+        <a class="btn btn-sm" href="#contact">RSVP</a>
+      </article>
+      <article class="event">
+        <div class="date"><b class="ph">—</b><span class="ph">[mon]</span></div>
+        <div><span class="etag">Speaker</span><h3 class="ph">[Event title]</h3><p class="ph">[Time · Location · Open to]</p></div>
+        <a class="btn btn-sm" href="#contact">RSVP</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="recruitment" style="background: var(--bg-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="tag">Recruitment</span><h2>How to join.</h2></div>
+      <p class="ph">[Who should apply, no experience required or not, and when the next cycle opens.]</p>
+    </div>
+    <div class="timeline">
+      <div class="step"><span class="when ph">[Date]</span><h3>Info session</h3><p class="ph">[Location and what to expect.]</p></div>
+      <div class="step"><span class="when ph">[Date]</span><h3>Applications open</h3><p class="ph">[Link to the form and what it asks.]</p></div>
+      <div class="step"><span class="when ph">[Date]</span><h3>Interviews</h3><p class="ph">[Format: a short chat, a trading game, or both.]</p></div>
+      <div class="step"><span class="when ph">[Date]</span><h3>Decisions</h3><p class="ph">[When new members hear back and onboarding.]</p></div>
+    </div>
+    <div style="margin-top: 36px;"><a class="btn" href="#contact">Join the interest list</a></div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="contact">
       <div>
         <h2>Talk to us.</h2>
-        <p>Sponsorship, speaking, or joining. One inbox for all of it.</p>
-        <div class="email"><code id="email">[email@domain]</code><button class="copy" id="copyBtn" type="button">Copy</button></div>
+        <p>Sponsorship has its own inbox, so firms get a fast answer. Everything else goes to the general one.</p>
+        <div class="emails">
+          <div class="email"><span class="elabel">Sponsorship</span><code id="emailSponsor">[sponsors@domain]</code><button class="copy" type="button" data-copy="emailSponsor">Copy</button></div>
+          <div class="email"><span class="elabel">General and joining</span><code id="emailGeneral">[hello@domain]</code><button class="copy" type="button" data-copy="emailGeneral">Copy</button></div>
+        </div>
       </div>
       <div class="socials">
         <a href="#contact"><b>Instagram</b><span class="ph">[@handle]</span></a>
@@ -455,128 +610,208 @@ footer .disc { max-width: 70ch; }
 <footer>
   <div class="wrap">
     <div><b>Traders @ Princeton</b> · <span class="ph">[year]</span></div>
-    <p class="disc">Traders @ Princeton is an independent student group. It is not affiliated with, sponsored by, or endorsed by Princeton University. The order book above is a simulation for a fictional ticker and shows no real market data.</p>
+    <p class="disc">Traders @ Princeton is an independent student group. It is not affiliated with, sponsored by, or endorsed by Princeton University. The order book above is a simulation for a fictional ticker. It shows no real market data, and no real money changes hands.</p>
   </div>
 </footer>
 
 <script>
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var LEVELS = 8, TICK = 0.01;
-  var mid = 100.00, open = 100.00, last = 100.00, lastDir = 0;
-  var bids = [], asks = [];
-  var bidsEl = document.getElementById('bids'), asksEl = document.getElementById('asks');
-  var tapeEl = document.getElementById('tape');
-  var lastEl = document.getElementById('last'), chgEl = document.getElementById('chg');
-  var spreadEl = document.getElementById('spread'), midEl = document.getElementById('mid'), imbEl = document.getElementById('imb');
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------- Simulated order book. Prices are integer cents. ---------- */
+  var LEVELS = 8, OPEN = 10000;
+  var bids = [], asks = [], pos = 0, cash = 0;
+  var bidsEl = $('bids'), asksEl = $('asks'), tapeEl = $('tape');
+  var lastEl = $('last'), chgEl = $('chg'), spreadEl = $('spread'), midEl = $('mid'), imbEl = $('imb');
+  var posEl = $('pos'), pnlEl = $('pnl');
 
   function rsize() { return Math.round(40 + Math.random() * Math.random() * 900); }
-  function fmt(n) { return n.toFixed(2); }
+  function px(c) { return (c / 100).toFixed(2); }
   function hhmmss(d) { return d.toTimeString().slice(0, 8); }
 
-  function rebuild() {
-    bids = []; asks = [];
-    for (var i = 0; i < LEVELS; i++) {
-      bids.push({ px: mid - TICK * (i + 0.5), sz: rsize() });
-      asks.push({ px: mid + TICK * (i + 0.5), sz: rsize() });
-    }
+  for (var i = 0; i < LEVELS; i++) {
+    bids.push({ px: OPEN - 1 - i, sz: rsize() });
+    asks.push({ px: OPEN + i, sz: rsize() });
   }
 
-  function rowHTML(side, lv, total, maxTotal) {
+  function rowHTML(lv, total, maxTotal) {
     var w = Math.min(100, (total / maxTotal) * 100).toFixed(1);
     return '<div class="row"><div class="bar" style="width:' + w + '%"></div>' +
-      '<span class="px">' + fmt(lv.px) + '</span><span>' + lv.sz + '</span><span class="tot">' + total + '</span></div>';
+      '<span class="px">' + px(lv.px) + '</span><span>' + lv.sz + '</span><span class="tot">' + total + '</span></div>';
   }
 
   function render(flashIdx, flashSide, flashDir) {
-    var tb = 0, ta = 0, i;
-    var totB = [], totA = [];
-    for (i = 0; i < LEVELS; i++) { tb += bids[i].sz; totB.push(tb); ta += asks[i].sz; totA.push(ta); }
-    var max = Math.max(tb, ta);
-    var hb = '', ha = '';
-    for (i = 0; i < LEVELS; i++) { hb += rowHTML('b', bids[i], totB[i], max); ha += rowHTML('a', asks[i], totA[i], max); }
+    var tb = 0, ta = 0, totB = [], totA = [], k;
+    for (k = 0; k < LEVELS; k++) { tb += bids[k].sz; totB.push(tb); ta += asks[k].sz; totA.push(ta); }
+    var max = Math.max(tb, ta), hb = '', ha = '';
+    for (k = 0; k < LEVELS; k++) { hb += rowHTML(bids[k], totB[k], max); ha += rowHTML(asks[k], totA[k], max); }
     bidsEl.innerHTML = hb; asksEl.innerHTML = ha;
     if (!reduce && flashIdx >= 0) {
       var el = (flashSide === 'b' ? bidsEl : asksEl).children[flashIdx];
       if (el) el.classList.add(flashDir > 0 ? 'flash-up' : 'flash-down');
     }
-    spreadEl.textContent = fmt(asks[0].px - bids[0].px);
-    midEl.textContent = ((asks[0].px + bids[0].px) / 2).toFixed(3);
+    var midc = (bids[0].px + asks[0].px) / 2;
+    spreadEl.textContent = px(asks[0].px - bids[0].px);
+    midEl.textContent = (midc / 100).toFixed(3);
     imbEl.textContent = (bids[0].sz / (bids[0].sz + asks[0].sz)).toFixed(2);
+    var pnl = (cash + pos * midc) / 100;
+    posEl.textContent = (pos > 0 ? '+' : '') + pos;
+    pnlEl.textContent = (pnl < 0 ? '-' : '+') + Math.abs(pnl).toFixed(2);
+    pnlEl.className = pnl > 0.004 ? 'up' : pnl < -0.004 ? 'down' : '';
   }
 
-  function print(side, px, sz) {
+  function print(side, c, sz, you) {
     var li = document.createElement('li');
-    li.innerHTML = '<span class="' + (side > 0 ? 'buy' : 'sell') + '">' + (side > 0 ? 'BUY' : 'SELL') + '</span><span>' + fmt(px) + '</span><span>' + sz + '</span><span class="t">' + hhmmss(new Date()) + '</span>';
+    var label = you ? (side > 0 ? 'YOU B' : 'YOU S') : (side > 0 ? 'BUY' : 'SELL');
+    li.innerHTML = '<span class="' + (you ? 'you' : side > 0 ? 'buy' : 'sell') + '">' + label + '</span><span>' + px(c) + '</span><span>' + sz + '</span><span class="t">' + hhmmss(new Date()) + '</span>';
     tapeEl.insertBefore(li, tapeEl.firstChild);
     while (tapeEl.children.length > 5) tapeEl.removeChild(tapeEl.lastChild);
-    last = px; lastDir = side;
-    lastEl.textContent = fmt(px);
+    lastEl.textContent = px(c);
     lastEl.className = 'term-last ' + (side > 0 ? 'up' : 'down');
-    var d = px - open, pct = (d / open) * 100;
-    chgEl.textContent = (d >= 0 ? '+' : '') + fmt(d) + ' (' + (d >= 0 ? '+' : '') + pct.toFixed(2) + '%)';
+    var d = c - OPEN, pct = (d / OPEN) * 100;
+    chgEl.textContent = (d >= 0 ? '+' : '-') + px(Math.abs(d)) + ' (' + (d >= 0 ? '+' : '-') + Math.abs(pct).toFixed(2) + '%)';
     chgEl.className = 'term-chg ' + (d >= 0 ? 'up' : 'down');
   }
 
-  function step() {
-    var r = Math.random(), fi = -1, fs = 'b', fd = 1;
-    if (r < 0.22) {
-      // Aggressive order takes the top of book; price may move.
-      var side = Math.random() < 0.5 ? 1 : -1;
-      var book = side > 0 ? asks : bids;
-      var sz = Math.round(Math.random() * book[0].sz * 1.3) + 10;
-      print(side, book[0].px, Math.min(sz, book[0].sz + 200));
-      if (sz >= book[0].sz) {
-        // Level cleared: shift mid by a tick and add a fresh deep level.
-        mid += side * TICK;
+  // A marketable order walks the book. Each cleared level moves the market one tick.
+  function take(side, qty, you) {
+    var book = side > 0 ? asks : bids, other = side > 0 ? bids : asks;
+    var left = qty, notional = 0;
+    while (left > 0) {
+      var lv = book[0], q = Math.min(left, lv.sz);
+      notional += q * lv.px; left -= q; lv.sz -= q;
+      if (lv.sz <= 0) {
         book.shift();
-        book.push({ px: book[book.length - 1].px + side * TICK, sz: rsize() });
-        var other = side > 0 ? bids : asks;
-        other.unshift({ px: other[0].px + side * TICK, sz: rsize() });
+        book.push({ px: book[book.length - 1].px + side, sz: rsize() });
+        other.unshift({ px: other[0].px + side, sz: rsize() });
         other.pop();
-        fi = 0; fs = side > 0 ? 'a' : 'b'; fd = side;
-      } else {
-        book[0].sz -= sz;
-        fi = 0; fs = side > 0 ? 'a' : 'b'; fd = side;
       }
-    } else {
-      // Passive order added or cancelled somewhere in the book.
-      var s = Math.random() < 0.5 ? 'b' : 'a';
-      var arr = s === 'b' ? bids : asks;
-      var idx = Math.floor(Math.random() * Math.random() * LEVELS);
-      var delta = Math.round((Math.random() - 0.45) * 300);
-      arr[idx].sz = Math.max(10, arr[idx].sz + delta);
-      fi = idx; fs = s; fd = delta >= 0 ? 1 : -1;
     }
-    // Slow mean reversion so the sim does not drift away.
-    if (Math.random() < 0.05 && Math.abs(mid - open) > 0.2) {
-      var dir = mid > open ? -1 : 1; mid += dir * TICK; rebuild();
+    print(side, notional / qty, qty, you);
+    if (you) { pos += side * qty; cash -= side * notional; }
+  }
+
+  function step() {
+    var fi, fs, fd;
+    if (Math.random() < 0.22) {
+      // Flow leans back toward the open so the price never wanders off.
+      var lean = Math.max(-0.3, Math.min(0.3, (bids[0].px - OPEN) / 150));
+      var side = Math.random() < 0.5 - lean ? 1 : -1;
+      var top = (side > 0 ? asks : bids)[0].sz;
+      take(side, Math.max(10, Math.round(Math.random() * top * 1.3)), false);
+      fi = 0; fs = side > 0 ? 'a' : 'b'; fd = side;
+    } else {
+      // A resting order is added or cancelled somewhere in the book.
+      fs = Math.random() < 0.5 ? 'b' : 'a';
+      var arr = fs === 'b' ? bids : asks;
+      fi = Math.floor(Math.random() * Math.random() * LEVELS);
+      var delta = Math.round((Math.random() - 0.45) * 300);
+      arr[fi].sz = Math.max(10, arr[fi].sz + delta);
+      fd = delta >= 0 ? 1 : -1;
     }
     render(fi, fs, fd);
   }
 
-  rebuild();
   render(-1);
-  print(1, asks[0].px, 120);
-  var interval = reduce ? 1600 : 420;
+  print(1, asks[0].px, 120, false);
   setInterval(function () {
     if (document.hidden) return;
     step();
-    if (Math.random() < 0.35) setTimeout(step, 120 + Math.random() * 160);
-  }, interval);
+    if (!reduce && Math.random() < 0.35) setTimeout(step, 120 + Math.random() * 160);
+  }, reduce ? 1600 : 420);
 
-  // Copy email
-  var btn = document.getElementById('copyBtn');
-  btn.addEventListener('click', function () {
-    var text = document.getElementById('email').textContent;
-    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }
-    function fallback() {
-      var range = document.createRange(); range.selectNodeContents(document.getElementById('email'));
-      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  $('buyBtn').addEventListener('click', function () { take(1, 100, true); render(0, 'a', 1); });
+  $('sellBtn').addEventListener('click', function () { take(-1, 100, true); render(0, 'b', -1); });
+
+  /* ---------- Make-a-market game ---------- */
+  var QUESTIONS = [
+    { q: 'You flip a fair coin until you see two heads in a row. How many flips do you expect to make?', fair: 6, unit: 'flips',
+      why: 'Call the answer E. Then E = ½(1 + E) + ¼(2 + E) + ¼(2), which gives E = 6.' },
+    { q: 'You roll a die and get paid the number in dollars. You may re-roll once, but must keep the second roll. What is the game worth?', fair: 4.25, unit: 'dollars',
+      why: 'Re-roll a 1, 2 or 3. Half the time you keep an average of 5. Otherwise you get 3.5.' },
+    { q: 'Roll two fair dice. What is the expected value of the higher one?', fair: 4.47, unit: '',
+      why: 'P(max ≤ k) = k²/36, so the expectation is 161/36.' },
+    { q: 'How many rolls of a fair die do you expect to need before every face has shown up?', fair: 14.7, unit: 'rolls',
+      why: 'Coupon collector: 6 × (1 + 1/2 + 1/3 + 1/4 + 1/5 + 1/6).' },
+    { q: 'How many people must be in a room for a better than even chance that two share a birthday?', fair: 23, unit: 'people',
+      why: 'With 23 people, the chance that all birthdays differ falls to 49.3%.' },
+    { q: 'You turn over cards from a shuffled deck until the first ace appears. How many cards do you expect to turn, counting the ace?', fair: 10.6, unit: 'cards',
+      why: 'The four aces cut the other 48 cards into five equal gaps on average, so the first ace sits at 53/5.' }
+  ];
+  var qi = 0, pts = 0, made = 0, bad = 0;
+  var gQ = $('gQ'), gMeta = $('gMeta'), gOut = $('gOut'), bidIn = $('bidIn'), askIn = $('askIn'), quoteBtn = $('quoteBtn');
+  function num(n) { return String(+n.toFixed(2)); }
+  function say(cls, title, body, why) {
+    gOut.className = 'game-out' + (cls ? ' ' + cls : '');
+    gOut.innerHTML = '';
+    var b = document.createElement('b'); b.textContent = title; gOut.appendChild(b);
+    gOut.appendChild(document.createTextNode(body));
+    if (why) { var w = document.createElement('span'); w.className = 'why-line'; w.textContent = why; gOut.appendChild(w); }
+  }
+  function load() {
+    var Q = QUESTIONS[qi];
+    gMeta.textContent = 'Question ' + (qi + 1) + ' of ' + QUESTIONS.length + (Q.unit ? ' · answer in ' + Q.unit : '');
+    gQ.textContent = Q.q;
+    bidIn.value = ''; askIn.value = ''; bidIn.disabled = askIn.disabled = quoteBtn.disabled = false;
+    say('', 'Waiting on your market.', 'Enter two numbers, with the bid below the ask.');
+  }
+  $('gameForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bid = parseFloat(bidIn.value), ask = parseFloat(askIn.value), Q = QUESTIONS[qi], F = Q.fair;
+    if (!isFinite(bid) || !isFinite(ask)) { say('', 'Need both sides.', 'A market has a bid and an ask. Enter a number in each box.'); return; }
+    if (bid >= ask) { say('', 'Crossed market.', 'Your bid must be below your ask, or anyone can trade against you for free.'); return; }
+    made++;
+    var delta;
+    if (bid <= F && F <= ask) {
+      delta = Math.max(5, Math.round(100 * (1 - (ask - bid) / F)));
+      say('win', 'Good market. +' + delta, 'Fair value is ' + num(F) + '. Your ' + num(ask - bid) + ' wide market held it.', Q.why);
+    } else {
+      var miss = F > ask ? F - ask : bid - F;
+      delta = -Math.max(5, Math.min(100, Math.round(100 * miss / F)));
+      bad++;
+      say('lose', 'Picked off. ' + delta, F > ask
+        ? 'Fair value is ' + num(F) + '. We lift your ' + num(ask) + ' offer, and you are short ' + num(miss) + ' below fair.'
+        : 'Fair value is ' + num(F) + '. We hit your ' + num(bid) + ' bid, and you are long ' + num(miss) + ' above fair.', Q.why);
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
-    else fallback();
+    pts += delta;
+    $('scPts').textContent = pts; $('scN').textContent = made; $('scBad').textContent = bad;
+    bidIn.disabled = askIn.disabled = quoteBtn.disabled = true;
   });
+  $('nextBtn').addEventListener('click', function () { qi = (qi + 1) % QUESTIONS.length; load(); bidIn.focus(); });
+  load();
+
+  /* ---------- Nav: mobile menu and active section ---------- */
+  var menuBtn = $('menuBtn'), navLinks = $('navLinks');
+  function setMenu(open) { navLinks.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); }
+  menuBtn.addEventListener('click', function () { setMenu(!navLinks.classList.contains('open')); });
+  navLinks.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
+  if ('IntersectionObserver' in window) {
+    var links = navLinks.querySelectorAll('li:not(.nav-cta-item) a');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        for (var j = 0; j < links.length; j++) links[j].classList.toggle('active', links[j].getAttribute('href') === '#' + en.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    var secs = document.querySelectorAll('section[id]');
+    for (var s2 = 0; s2 < secs.length; s2++) io.observe(secs[s2]);
+  }
+
+  /* ---------- Copy buttons ---------- */
+  var copies = document.querySelectorAll('.copy[data-copy]');
+  for (var c = 0; c < copies.length; c++) (function (btn) {
+    btn.addEventListener('click', function () {
+      var target = $(btn.getAttribute('data-copy')), text = target.textContent;
+      function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }
+      function fallback() {
+        var range = document.createRange(); range.selectNodeContents(target);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+      else fallback();
+    });
+  })(copies[c]);
 })();
 </script>
 </body>

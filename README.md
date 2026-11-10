@@ -30,8 +30,9 @@ Then open http://localhost:8765.
 
 ## Hosting
 
-GitHub Pages, deployed from the `main` branch, root folder. `.nojekyll` tells Pages to serve the files as-is.
-To use a custom domain, add a `CNAME` file containing the domain and set the DNS records GitHub lists under Settings → Pages.
+Live at https://tradersatprinceton.com. GitHub Pages serves the `main` branch root of this repo, and the `CNAME` file tells it which domain to use. `.nojekyll` makes Pages serve the files as-is.
+
+The domain is registered at Namecheap under the club's account. Its DNS has four A records for `@` pointing at GitHub Pages (185.199.108.153 to 185.199.111.153) and a CNAME for `www` pointing at `baryyiscool.github.io`. Keep auto-renew on. If the repo ever moves to another GitHub account, change that `www` record to the new account's `github.io` name.
 
 ## Disclaimer
 

@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Traders @ Princeton</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Traders @ Princeton is a student-run quantitative trading club: trading skills, internal trading games, and a student-run fund in the works.">
+<meta name="description" content="Traders @ Princeton is Princeton's premier student-run trading club, built around trading skills and internal trading games.">
 <meta name="theme-color" content="#0A0C12">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Traders @ Princeton">
-<meta property="og:description" content="A student-run quantitative trading club: trading skills, internal trading games, and a student-run fund in the works.">
+<meta property="og:description" content="Princeton's premier student-run trading club, built around trading skills and internal trading games.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A0C12'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-size='44' text-anchor='middle' fill='%23EE7F3A'%3E@%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,6 +147,8 @@ section { padding-block: 128px; border-bottom: 1px solid var(--line); }
 .col h3 { font-size: 32px; }
 .col p { font-size: 16px; color: var(--ink-2); }
 .col .status { color: var(--accent); }
+.cols-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 860px) { .cols-2 { grid-template-columns: 1fr; } }
 @media (max-width: 860px) { .cols { grid-template-columns: 1fr; gap: 40px; } }
 
 /* Sponsor tiers */
@@ -314,9 +316,9 @@ footer .disc { max-width: 78ch; }
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label">About</span><h2>For students who want to trade.</h2></div>
-      <p>Student-run and selective. We learn by practicing, competing, and building.</p>
+      <p>Student-run and selective. We learn by practicing and competing.</p>
     </div>
-    <div class="cols">
+    <div class="cols cols-2">
       <article class="col">
         <h3>Trading skills</h3>
         <p>We build the skills the job runs on: probability, expected value, mental math, and market making. The same work gets members ready for quant interviews.</p>
@@ -324,11 +326,6 @@ footer .disc { max-width: 78ch; }
       <article class="col">
         <h3>Trading games</h3>
         <p>Members make markets and trade against each other in internal games and competitions.</p>
-      </article>
-      <article class="col">
-        <h3>Student-run fund</h3>
-        <p>We are setting up a fund that members will manage themselves. It has not launched yet, and this page will say so when it does.</p>
-        <span class="label status">In the works</span>
       </article>
     </div>
   </div>
@@ -341,7 +338,7 @@ footer .disc { max-width: 78ch; }
       <p>Sponsors meet students who spend their free time trading, through our resume book, talks, recruiting dinners, and trading games that carry their name.</p>
     </div>
     <div class="cols">
-      <div class="col"><h3>Reach the right students</h3><p>Members are current and past interns at Jane Street, Citadel, Citadel Securities, Hudson River Trading, D. E. Shaw, Optiver, Susquehanna, and IMC. They drill market making, compete in trading games, and are building a student-run fund.</p></div>
+      <div class="col"><h3>Reach the right students</h3><p>Members are current and past interns at Jane Street, Citadel, Citadel Securities, Hudson River Trading, D. E. Shaw, Optiver, Susquehanna, and IMC. They drill market making and compete in trading games.</p></div>
       <div class="col"><h3>Spend time with members</h3><p>Give a talk, host a dinner or coffee chats, or put your name on a trading game and help design it.</p></div>
       <div class="col"><h3>Get in at the start</h3><p>The club is new. Firms that join this year are listed as founding sponsors.</p></div>
     </div>

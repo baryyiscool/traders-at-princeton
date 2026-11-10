@@ -1,21 +1,25 @@
 # Traders @ Princeton
 
 Website for Traders @ Princeton, a student-run quantitative trading club.
-The site is a single static page: `index.html` holds all the content, styles, and the order book animation.
+The site is a single static page:
+
+- `index.html`: all the content, top to bottom (hero, Initiatives, Team, Placement, Recruitment, Sponsors, Contact).
+- `styles.css` and `site.js`: its styles and behaviour.
 
 ## Editing
 
 1. Open `index.html` in any text editor. All copy is plain HTML in the page body.
-2. Team: each person is one `<div class="member">` line. Put a square-ish photo in `team/` and point the `<img>` at it.
-4. Sponsors: when a firm signs, replace a "Your logo here" box in the founding sponsors wall with its logo.
+2. Team: each person is one `<div class="member">` line. Put a square-ish photo in `team/` and point the `<img>` at it. The team shows four per row, and a shorter last row is centred.
+3. Sponsors: when a firm signs, replace a "Your logo here" box in the founding sponsors wall with its logo.
+4. Placements: each firm is one `<li>` in the `<ul class="placements">` list in the Placement section. Put the count in `<span>×4</span>` after the name, or leave the span out for one person,.
 5. The "Open the interest form" button in the Recruitment section links to a Google Form. Responses collect in the Google Sheet linked from the form's Responses tab. To change the questions, edit the form in Google Forms; the link stays the same.
 6. Commit and push to `main`. GitHub Pages redeploys within a minute or two.
 
 ## What's on the page
 
 - **Look and tone.** Near-black single theme, a serif display face (Cormorant Garamond), hairline rules, normal-case buttons, colour photos, and plain confident wording. Not playful, and not stiff either. Keep new sections in that voice.
-- **Internships band** under the hero: a dark ticker of firm logos shown in white. Logos live in `logos/`. Add a firm by adding its `<li>` to each of the four repeated groups, with a transparent-background logo. The files came from Wikimedia Commons; the IMC file is CC BY-SA 4.0 and is credited in the footer.
-- **Announcement bar** at the very top. Edit or delete the `<div class="announce">` block.
+- **Placement section**: a dark ticker of firm logos shown in white. Logos live in `logos/`. Add a firm by adding its `<li>` to each of the four repeated groups, with a transparent-background logo. The files came from Wikimedia Commons; the IMC file is CC BY-SA 4.0 and is credited in the footer.
+- **Hero**: a full-screen photo of Fine Hall (`images/fine-hall.jpg`) with the club name, a one-line tagline, and an Apply button (to Recruitment) centred over it. The nav sits on top of the photo and turns solid once you scroll. The photo is from Wikimedia Commons under CC BY-SA 4.0 and is credited in the footer; keep that credit if you keep the photo. To swap it, replace the file or change the `url(...)` in the `.hero` rule; dark overlays are set in `.hero::before`.
 
 ## Local preview
 

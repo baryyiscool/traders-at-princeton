@@ -5,10 +5,12 @@ The site is a single static page: `index.html` holds all the content, styles, an
 
 ## Editing
 
-1. Open `index.html` in any text editor.
-2. Search for `[` to find every placeholder. Each one is wrapped in `<span class="ph">…</span>` or has `class="ph"`; replace the bracketed text and remove the `ph` class so it stops rendering as a placeholder.
-3. Team photos: replace `<div class="avatar">[photo]</div>` with `<img class="avatar" src="team/name.jpg" alt="Name">` and put the image in a `team/` folder.
-4. Commit and push to `main`. GitHub Pages redeploys within a minute or two.
+1. Open `index.html` in any text editor. All copy is plain HTML in the page body.
+2. Team: each person is one `<div class="member">` line. Put a square-ish photo in `team/` and point the `<img>` at it.
+3. Events: each event is one `<article class="event">`. Replace `TBA` with the day and `Date` with the month once dates are set.
+4. Sponsors: when a firm signs, replace a "Your logo here" box in the founding sponsors wall with its logo.
+5. The interest list and sponsorship buttons open an email to the club address. Swap those `mailto:` links for the interest form link when you want to use the form.
+6. Commit and push to `main`. GitHub Pages redeploys within a minute or two.
 
 ## What's on the page
 

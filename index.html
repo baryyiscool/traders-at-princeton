@@ -111,7 +111,7 @@ section, header.hero { scroll-margin-top: 80px; }
 .interns-title { display: inline-flex; align-items: flex-start; gap: 14px; line-height: 1.08; font-family: var(--font-display); font-weight: 500; font-size: clamp(30px, 4vw, 50px); letter-spacing: -0.02em; }
 .interns-title i { flex: none; margin-top: .42em; width: 11px; height: 11px; border-radius: 50%; background: var(--bid); animation: pulse 1.6s infinite; }
 .tape-logos { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.tape-track { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; width: max-content; animation: marquee 62s linear infinite; }
+.tape-track { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; width: max-content; animation: marquee 82s linear infinite; }
 .tape-track li { display: flex; align-items: center; margin-right: 128px; }
 .tape-track img { display: block; width: auto; max-width: none; height: calc(var(--h) * var(--logo-scale, 1) * 1px); filter: brightness(0) invert(1); opacity: .88; transition: opacity .25s; }
 .tape-track li:hover img { opacity: 1; }
@@ -166,11 +166,11 @@ section { padding-block: 128px; border-bottom: 1px solid var(--line); }
 @media (max-width: 860px) { .tiers { grid-template-columns: 1fr; margin-top: 56px; } .tier + .tier { border-left: 0; border-top: 1px solid var(--line); } }
 
 /* Leadership */
-.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 48px 36px; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 64px 56px; max-width: 880px; }
 .member { display: grid; gap: 8px; align-content: start; }
 .avatar { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; margin-bottom: 16px; }
-.avatar.initials { display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line-2); font-family: var(--font-display); font-size: 58px; letter-spacing: .02em; color: var(--ink-2); }
-.member b { font-family: var(--font-display); font-weight: 500; font-size: 27px; line-height: 1.1; letter-spacing: -0.01em; }
+.avatar.initials { display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line-2); font-family: var(--font-display); font-size: 72px; letter-spacing: .02em; color: var(--ink-2); }
+.member b { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.1; letter-spacing: -0.01em; }
 .member span { font-size: 15px; color: var(--ink-2); }
 .member b a { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
 .member b a:hover { color: var(--accent); border-bottom-color: var(--accent); }
@@ -274,27 +274,35 @@ footer .disc { max-width: 78ch; }
   <div class="tape-logos">
     <ul class="tape-track">
       <li><img src="logos/jane-street.svg" alt="Jane Street" style="--h: 60"></li>
-      <li><img src="logos/citadel-securities.svg" alt="Citadel Securities" style="--h: 26"></li>
+      <li><img src="logos/citadel.svg" alt="Citadel" style="--h: 30"></li>
       <li><img src="logos/hrt.svg" alt="Hudson River Trading" style="--h: 54"></li>
+      <li><img src="logos/de-shaw.svg" alt="D. E. Shaw" style="--h: 52"></li>
       <li><img src="logos/optiver.svg" alt="Optiver" style="--h: 60"></li>
+      <li><img src="logos/citadel-securities.svg" alt="Citadel Securities" style="--h: 26"></li>
       <li><img src="logos/susquehanna.png" alt="Susquehanna International Group" style="--h: 29"></li>
       <li><img src="logos/imc.png" alt="IMC Trading" style="--h: 48"></li>
       <li class="dup" aria-hidden="true"><img src="logos/jane-street.svg" alt="" style="--h: 60"></li>
-      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="--h: 26"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel.svg" alt="" style="--h: 30"></li>
       <li class="dup" aria-hidden="true"><img src="logos/hrt.svg" alt="" style="--h: 54"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/de-shaw.svg" alt="" style="--h: 52"></li>
       <li class="dup" aria-hidden="true"><img src="logos/optiver.svg" alt="" style="--h: 60"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="--h: 26"></li>
       <li class="dup" aria-hidden="true"><img src="logos/susquehanna.png" alt="" style="--h: 29"></li>
       <li class="dup" aria-hidden="true"><img src="logos/imc.png" alt="" style="--h: 48"></li>
       <li class="dup" aria-hidden="true"><img src="logos/jane-street.svg" alt="" style="--h: 60"></li>
-      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="--h: 26"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel.svg" alt="" style="--h: 30"></li>
       <li class="dup" aria-hidden="true"><img src="logos/hrt.svg" alt="" style="--h: 54"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/de-shaw.svg" alt="" style="--h: 52"></li>
       <li class="dup" aria-hidden="true"><img src="logos/optiver.svg" alt="" style="--h: 60"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="--h: 26"></li>
       <li class="dup" aria-hidden="true"><img src="logos/susquehanna.png" alt="" style="--h: 29"></li>
       <li class="dup" aria-hidden="true"><img src="logos/imc.png" alt="" style="--h: 48"></li>
       <li class="dup" aria-hidden="true"><img src="logos/jane-street.svg" alt="" style="--h: 60"></li>
-      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="--h: 26"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel.svg" alt="" style="--h: 30"></li>
       <li class="dup" aria-hidden="true"><img src="logos/hrt.svg" alt="" style="--h: 54"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/de-shaw.svg" alt="" style="--h: 52"></li>
       <li class="dup" aria-hidden="true"><img src="logos/optiver.svg" alt="" style="--h: 60"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="--h: 26"></li>
       <li class="dup" aria-hidden="true"><img src="logos/susquehanna.png" alt="" style="--h: 29"></li>
       <li class="dup" aria-hidden="true"><img src="logos/imc.png" alt="" style="--h: 48"></li>
     </ul>
@@ -304,7 +312,7 @@ footer .disc { max-width: 78ch; }
 <div class="strip">
   <div class="wrap">
     <div class="stat"><b>Fall 2026</b><span>Founded</span></div>
-    <div class="stat"><b>6</b><span>Trading firms where members have interned</span></div>
+    <div class="stat"><b>8</b><span>Trading firms where members have interned</span></div>
     <div class="stat"><b>Spring 2027</b><span>Recruiting now</span></div>
     <div class="stat"><b>Open</b><span>Founding sponsor slots</span></div>
   </div>
@@ -341,7 +349,7 @@ footer .disc { max-width: 78ch; }
       <p>Sponsors meet students who spend their free time trading, through our resume book, talks, recruiting dinners, and trading games that carry their name.</p>
     </div>
     <div class="cols">
-      <div class="col"><h3>Reach the right students</h3><p>Members are current and past interns at Jane Street, Citadel Securities, Hudson River Trading, Optiver, Susquehanna, and IMC. They drill market making, compete in trading games, and are building a student-run fund.</p></div>
+      <div class="col"><h3>Reach the right students</h3><p>Members are current and past interns at Jane Street, Citadel, Citadel Securities, Hudson River Trading, D. E. Shaw, Optiver, Susquehanna, and IMC. They drill market making, compete in trading games, and are building a student-run fund.</p></div>
       <div class="col"><h3>Spend time with members</h3><p>Give a talk, host a dinner or coffee chats, or put your name on a trading game and help design it.</p></div>
       <div class="col"><h3>Get in at the start</h3><p>The club is new. Firms that join this year are listed as founding sponsors.</p></div>
     </div>
@@ -392,6 +400,7 @@ footer .disc { max-width: 78ch; }
       <div class="member"><img class="avatar" src="team/david.jpg" alt="David Ji" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/dj0677/" target="_blank" rel="noopener">David Ji</a></b><span>Co-President</span></div>
       <div class="member"><img class="avatar" src="team/jonathan.jpg" alt="Jonathan Liu" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/28-jonathan-liu/" target="_blank" rel="noopener">Jonathan Liu</a></b><span>Head of AI &amp; Quantitative Research</span></div>
       <div class="member"><img class="avatar" src="team/andrew.jpg" alt="Andrew Li" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/andrew-li-53bb95374/" target="_blank" rel="noopener">Andrew Li</a></b><span>Head of Education</span></div>
+      <div class="member"><img class="avatar" src="team/jisang.jpg" alt="Jisang Kymm" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/jisangkymm/" target="_blank" rel="noopener">Jisang Kymm</a></b><span>Head of Macro &amp; Discretionary Trading</span></div>
       <div class="member"><div class="avatar initials" aria-hidden="true">YA</div><b><a href="https://www.linkedin.com/in/yujayan13/" target="_blank" rel="noopener">Yujay An</a></b><span>Director of Technology</span></div>
     </div>
   </div>

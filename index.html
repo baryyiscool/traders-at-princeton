@@ -166,14 +166,16 @@ section { padding-block: 128px; border-bottom: 1px solid var(--line); }
 @media (max-width: 860px) { .tiers { grid-template-columns: 1fr; margin-top: 56px; } .tier + .tier { border-left: 0; border-top: 1px solid var(--line); } }
 
 /* Leadership */
-.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 220px)); gap: 56px; }
-.member { display: grid; gap: 8px; }
+.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 48px 36px; }
+.member { display: grid; gap: 8px; align-content: start; }
 .avatar { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; margin-bottom: 16px; }
-.member b { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.1; letter-spacing: -0.01em; }
+.avatar.initials { display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line-2); font-family: var(--font-display); font-size: 58px; letter-spacing: .02em; color: var(--ink-2); }
+.member b { font-family: var(--font-display); font-weight: 500; font-size: 27px; line-height: 1.1; letter-spacing: -0.01em; }
 .member span { font-size: 15px; color: var(--ink-2); }
 .member b a { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
 .member b a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .member b a::after { content: "↗"; margin-left: .3em; font-family: var(--font-body); font-size: .5em; vertical-align: .5em; color: var(--ink-3); }
+@media (max-width: 640px) { .team { grid-template-columns: 1fr 1fr; gap: 36px 20px; } .member b { font-size: 23px; } .avatar.initials { font-size: 44px; } }
 
 /* Calendar */
 .events { border-bottom: 1px solid var(--line); }
@@ -390,6 +392,7 @@ footer .disc { max-width: 78ch; }
       <div class="member"><img class="avatar" src="team/david.jpg" alt="David Ji" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/dj0677/" target="_blank" rel="noopener">David Ji</a></b><span>Co-President</span></div>
       <div class="member"><img class="avatar" src="team/jonathan.jpg" alt="Jonathan Liu" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/28-jonathan-liu/" target="_blank" rel="noopener">Jonathan Liu</a></b><span>Head of AI &amp; Quantitative Research</span></div>
       <div class="member"><img class="avatar" src="team/andrew.jpg" alt="Andrew Li" width="480" height="480" loading="lazy"><b><a href="https://www.linkedin.com/in/andrew-li-53bb95374/" target="_blank" rel="noopener">Andrew Li</a></b><span>Head of Education</span></div>
+      <div class="member"><div class="avatar initials" aria-hidden="true">YA</div><b><a href="https://www.linkedin.com/in/yujayan13/" target="_blank" rel="noopener">Yujay An</a></b><span>Director of Technology</span></div>
     </div>
   </div>
 </section>
@@ -422,12 +425,12 @@ footer .disc { max-width: 78ch; }
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label">Joining</span><h2>Who we're looking for.</h2></div>
-      <p>No finance background needed. We care more about how you think than what you already know.</p>
+      <p>We are selective. No finance background is required. Exceptional ability is.</p>
     </div>
     <div class="cols">
-      <div class="col"><h3>Any background</h3><p>Any major is welcome. You don't need to have studied finance or economics, or to have traded before. We teach what you need.</p></div>
-      <div class="col"><h3>People who like hard problems</h3><p>Puzzles, probability, games, anything where the answer isn't obvious and you have to reason your way to it. If that sounds like fun, you will fit in.</p></div>
-      <div class="col"><h3>People who make others better</h3><p>Trading is a team effort. We want people who explain their thinking clearly, listen well, and change their mind when the evidence says so.</p></div>
+      <div class="col"><h3>Exceptional problem solvers</h3><p>People who are at their best on problems with no obvious answer, and who are not satisfied until they have solved them.</p></div>
+      <div class="col"><h3>Proven ability, in any field</h3><p>Olympiad medalists, researchers, competitive programmers, serious game players, builders. You do not need to know finance. You need to have shown you are very good at something hard.</p></div>
+      <div class="col"><h3>A high bar, held together</h3><p>The best people make each other better. We want members who reason clearly out loud, take being wrong well, and raise the standard of everyone around them.</p></div>
     </div>
     <div class="sponsor-cta"><a class="btn" href="#recruitment">How to join</a></div>
   </div>

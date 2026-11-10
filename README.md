@@ -9,7 +9,7 @@ The site is a single static page: `index.html` holds all the content, styles, an
 2. Team: each person is one `<div class="member">` line. Put a square-ish photo in `team/` and point the `<img>` at it.
 3. Events: each event is one `<article class="event">`. Replace `TBA` with the day and `Date` with the month once dates are set.
 4. Sponsors: when a firm signs, replace a "Your logo here" box in the founding sponsors wall with its logo.
-5. The interest form in the Recruitment section has no backend. On submit it opens an email to the club address with the answers filled in, and shows the same text to copy as a fallback. To collect answers in a spreadsheet instead, make a Google Form and point the form's `submit` handler or the "Join" links at it.
+5. The "Open the interest form" button in the Recruitment section links to a Google Form. Responses collect in the Google Sheet linked from the form's Responses tab. To change the questions, edit the form in Google Forms; the link stays the same.
 6. Commit and push to `main`. GitHub Pages redeploys within a minute or two.
 
 ## What's on the page

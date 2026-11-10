@@ -37,7 +37,6 @@
   --bid-bar: rgba(25,166,94,.22);
   --ask-bar: rgba(233,69,60,.22);
   --shadow: 0 10px 30px rgba(16,19,42,.08);
-  --logo-bg: #FFFFFF;   /* firm logos keep their own colours, so they always sit on white */
   --font-display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Figtree", "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
@@ -281,14 +280,19 @@ img.avatar { width: 100%; height: auto; object-fit: cover; border: 0; display: b
 .desk .pos b.down { color: var(--ask); }
 .tape .you { color: #FF8A4C; }
 
-/* Where members have interned */
-.interns { border-top: 1px solid var(--line); padding-block: 26px 22px; }
-.interns .wrap { display: grid; gap: 14px; }
-.interns-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
-.interns-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
-.interns-logos li { flex: 1 1 150px; min-width: 0; height: 68px; padding: 0 18px; display: grid; place-items: center; background: var(--logo-bg); border: 1px solid var(--line); border-radius: 14px; }
-.interns-logos img { display: block; width: auto; max-width: 100%; object-fit: contain; }
-.interns-note { font-size: 13px; color: var(--ink-2); }
+/* Where members have interned: a dark ticker band of one-colour logos */
+.interns { background: var(--term-bg); color: var(--term-ink); border-block: 1px solid var(--term-line); padding-block: 34px 38px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; overflow: hidden; }
+.interns-head { width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 6px 28px; flex-wrap: wrap; }
+.interns-label { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -0.01em; }
+.interns-label i { width: 10px; height: 10px; border-radius: 50%; background: var(--bid); animation: pulse 1.4s infinite; flex: none; }
+.interns-note { font-size: 13px; color: var(--term-muted); }
+.tape-logos { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+.tape-track { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; width: max-content; animation: marquee 42s linear infinite; }
+.tape-track li { margin-right: 84px; display: flex; align-items: center; }
+.tape-track img { display: block; width: auto; filter: brightness(0) invert(1); opacity: .8; transition: opacity .2s, transform .2s; }
+.tape-track li:hover img { opacity: 1; transform: scale(1.07); }
+.tape-logos:hover .tape-track { animation-play-state: paused; }
+@media (max-width: 640px) { .tape-track li { margin-right: 56px; } .tape-track { animation-duration: 30s; } }
 
 /* Sponsor marquee */
 .marquee { overflow: hidden; border-top: 1px solid var(--line); padding-block: 14px; }
@@ -353,7 +357,11 @@ footer .disc { max-width: 70ch; }
   html { scroll-behavior: auto; }
   .row.flash-up, .row.flash-down, .tape li:first-child, .term-live i { animation: none; }
   .row .bar, .brand .at, .pillar, .btn, .tbtn { transition: none; }
-  .marquee-track { animation: none; }
+  .marquee-track, .interns-label i { animation: none; }
+  .tape-logos { -webkit-mask-image: none; mask-image: none; }
+  .tape-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; gap: 28px 56px; padding-inline: 16px; }
+  .tape-track li { margin-right: 0; }
+  .tape-track li.dup { display: none; }
 }
 </style>
 </head>
@@ -428,16 +436,33 @@ footer .disc { max-width: 70ch; }
 </header>
 
 <div class="interns">
-  <div class="wrap">
-    <p class="interns-label">Our members are current and past interns at</p>
-    <ul class="interns-logos">
-      <li><img src="logos/jane-street.svg" alt="Jane Street" style="height: 34px"></li>
-      <li><img src="logos/citadel-securities.svg" alt="Citadel Securities" style="height: 14px"></li>
-      <li><img src="logos/optiver.svg" alt="Optiver" style="height: 34px"></li>
-      <li><img src="logos/susquehanna.png" alt="Susquehanna International Group" style="height: 15px"></li>
-      <li><img src="logos/imc.png" alt="IMC Trading" style="height: 26px"></li>
+  <div class="wrap interns-head">
+    <p class="interns-label"><i aria-hidden="true"></i>Where our members intern</p>
+    <p class="interns-note">Current and past internships. These firms do not sponsor or endorse the club.</p>
+  </div>
+  <div class="tape-logos">
+    <ul class="tape-track">
+      <li><img src="logos/jane-street.svg" alt="Jane Street" style="height: 44px"></li>
+      <li><img src="logos/citadel-securities.svg" alt="Citadel Securities" style="height: 19px"></li>
+      <li><img src="logos/optiver.svg" alt="Optiver" style="height: 44px"></li>
+      <li><img src="logos/susquehanna.png" alt="Susquehanna International Group" style="height: 21px"></li>
+      <li><img src="logos/imc.png" alt="IMC Trading" style="height: 36px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/jane-street.svg" alt="" style="height: 44px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="height: 19px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/optiver.svg" alt="" style="height: 44px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/susquehanna.png" alt="" style="height: 21px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/imc.png" alt="" style="height: 36px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/jane-street.svg" alt="" style="height: 44px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="height: 19px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/optiver.svg" alt="" style="height: 44px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/susquehanna.png" alt="" style="height: 21px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/imc.png" alt="" style="height: 36px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/jane-street.svg" alt="" style="height: 44px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/citadel-securities.svg" alt="" style="height: 19px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/optiver.svg" alt="" style="height: 44px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/susquehanna.png" alt="" style="height: 21px"></li>
+      <li class="dup" aria-hidden="true"><img src="logos/imc.png" alt="" style="height: 36px"></li>
     </ul>
-    <p class="interns-note">Shown to say where our members have worked. These firms do not sponsor or endorse the club.</p>
   </div>
 </div>
 
@@ -641,7 +666,7 @@ footer .disc { max-width: 70ch; }
   <div class="wrap">
     <div><b>Traders @ Princeton</b> · 2026</div>
     <p class="disc">Traders @ Princeton is an independent student group. It is not affiliated with, sponsored by, or endorsed by Princeton University. The order book above is a simulation for a fictional ticker. It shows no real market data, and no real money changes hands.</p>
-    <p class="disc">Firm names and logos belong to their owners and appear only to show where members have interned. IMC logo file from Wikimedia Commons, CC BY-SA 4.0.</p>
+    <p class="disc">Firm names and logos belong to their owners and appear only to show where members have interned. Logos are shown in one colour. IMC logo adapted from a Wikimedia Commons file, CC BY-SA 4.0.</p>
   </div>
 </footer>
 

@@ -16,7 +16,7 @@ The site is a single static page: `index.html` holds all the content, styles, an
 
 - **Order book** in the hero. It is a simulation in the script at the bottom of `index.html`, and visitors can trade it with the Buy and Sell buttons.
 - **Make a market** game. The questions live in the `QUESTIONS` array in the same script. Each one needs a question, a fair value, a unit, and a one-line explanation.
-- **Sponsor strip** under the hero. Replace the "Your firm here" items with sponsor names or logos as they sign.
+- **Internships row** under the hero. Logos live in `logos/` and sit on white tiles so their colours stay as the firms publish them. Add a firm by adding one `<li>` with its logo. The files came from Wikimedia Commons; the IMC file is CC BY-SA 4.0 and is credited in the footer.
 - **Announcement bar** at the very top. Edit or delete the `<div class="announce">` block.
 
 ## Local preview

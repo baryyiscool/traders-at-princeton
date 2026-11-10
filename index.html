@@ -324,6 +324,28 @@ img.avatar { width: 100%; height: auto; object-fit: cover; border: 0; display: b
 .score b { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
 @media (max-width: 860px) { .game { grid-template-columns: 1fr; } .game-card, .game-side { padding: 22px; } }
 
+/* Interest form */
+.join { margin-top: 44px; max-width: 760px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: grid; gap: 18px; scroll-margin-top: 88px; }
+.join-head h3 { font-size: 24px; font-weight: 700; }
+.join-head p { margin-top: 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.f { display: grid; gap: 6px; min-width: 0; margin: 0; padding: 0; border: 0; font-size: 14px; font-weight: 600; }
+.f legend { padding: 0; margin-bottom: 8px; }
+.f input[type="text"], .f input[type="email"], .f select, .f textarea, .join-done textarea { width: 100%; font: 400 16px var(--font-body); padding: 11px 13px; border-radius: 10px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
+.f input[type="text"]:focus-visible, .f input[type="email"]:focus-visible, .f select:focus-visible, .f textarea:focus-visible { outline: none; border-color: var(--ink); }
+.f textarea { resize: vertical; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 2px solid var(--line); border-radius: 999px; font-weight: 500; cursor: pointer; }
+.chip input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); }
+.chip:has(input:checked) { border-color: var(--ink); background: var(--accent-soft); }
+.join-actions { display: flex; align-items: center; gap: 12px 18px; flex-wrap: wrap; }
+.join-hint { flex: 1 1 220px; font-size: 13px; color: var(--ink-2); }
+.join-error { font-size: 14px; font-weight: 600; color: var(--ask); }
+.join-done { display: grid; gap: 10px; padding: 18px; border-radius: 14px; background: var(--bg-2); font-size: 15px; }
+.join-done b { font-family: var(--font-display); font-size: 18px; }
+.join-done textarea { font: 13px/1.5 var(--font-mono); resize: vertical; }
+@media (max-width: 640px) { .join { padding: 22px; } .join-grid { grid-template-columns: 1fr; } }
+
 /* Small additions */
 .plink { font-weight: 600; font-size: 15px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 4px; justify-self: start; }
 .etag { display: inline-block; justify-self: start; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); background: var(--accent-soft); padding: 3px 9px; border-radius: 999px; margin-bottom: 8px; }
@@ -596,11 +618,48 @@ footer .disc { max-width: 70ch; }
       <p>We are recruiting now for Spring 2027. Join the interest list and we will be in touch with next steps.</p>
     </div>
     <div class="timeline">
-      <div class="step"><span class="when">Now</span><h3>Join the interest list</h3><p>Email us to add your name.</p></div>
+      <div class="step"><span class="when">Now</span><h3>Join the interest list</h3><p>Fill in the form below.</p></div>
       <div class="step"><span class="when">Next</span><h3>Hear from us</h3><p>We reply with next steps and dates.</p></div>
       <div class="step"><span class="when">Spring 2027</span><h3>New members start</h3><p>The incoming class joins the club.</p></div>
     </div>
-    <div style="margin-top: 36px;"><a class="btn" href="mailto:TradersatPrinceton@gmail.com?subject=Interest%20list%20for%20Spring%202027">Join the interest list</a></div>
+    <form class="join" id="join" novalidate>
+      <div class="join-head"><h3>Interest form</h3><p>Spring 2027 · about a minute</p></div>
+      <div class="join-grid">
+        <label class="f" for="jName">Full name<input id="jName" type="text" autocomplete="name" required></label>
+        <label class="f" for="jEmail">Email<input id="jEmail" type="email" autocomplete="email" inputmode="email" required></label>
+        <label class="f" for="jYear">Class year
+          <select id="jYear" required>
+            <option value="">Choose one</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>Graduate student</option>
+          </select>
+        </label>
+        <label class="f" for="jMajor">Major or intended major<input id="jMajor" type="text" autocomplete="off"></label>
+      </div>
+      <fieldset class="f">
+        <legend>What are you most interested in?</legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="interest" value="Interview prep" id="jInt1">Interview prep</label>
+          <label class="chip"><input type="checkbox" name="interest" value="Trading games" id="jInt2">Trading games</label>
+          <label class="chip"><input type="checkbox" name="interest" value="Student-run fund" id="jInt3">Student-run fund</label>
+        </div>
+      </fieldset>
+      <label class="f" for="jExp">Trading or quant experience so far
+        <select id="jExp">
+          <option>None yet</option><option>Coursework or self-study</option><option>Competitions or personal projects</option><option>Internship experience</option>
+        </select>
+      </label>
+      <label class="f" for="jNote">Anything else we should know? (optional)<textarea id="jNote" rows="3"></textarea></label>
+      <p class="join-error" id="jErr" role="alert" hidden></p>
+      <div class="join-actions">
+        <button class="btn btn-accent" type="submit">Send my interest</button>
+        <span class="join-hint">This opens an email to the club with your answers filled in. Nothing is stored on this site.</span>
+      </div>
+      <div class="join-done" id="jDone" hidden>
+        <b>One more step: press send.</b>
+        <span>Your email app should have opened with your answers. Send that email to finish. If nothing opened, copy the message below and email it to TradersatPrinceton@gmail.com.</span>
+        <textarea id="jMsg" rows="10" readonly aria-label="Your answers as an email"></textarea>
+        <div><button class="btn btn-sm" type="button" id="jCopy">Copy message</button></div>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -616,7 +675,7 @@ footer .disc { max-width: 70ch; }
       </div>
       <div class="socials">
         <a href="mailto:TradersatPrinceton@gmail.com?subject=Sponsorship"><b>Sponsor the club</b><span>Email</span></a>
-        <a href="mailto:TradersatPrinceton@gmail.com?subject=Interest%20list%20for%20Spring%202027"><b>Join for Spring 2027</b><span>Email</span></a>
+        <a href="#join"><b>Join for Spring 2027</b><span>Interest form</span></a>
       </div>
     </div>
   </div>
@@ -813,6 +872,41 @@ footer .disc { max-width: 70ch; }
     var secs = document.querySelectorAll('section[id]');
     for (var s2 = 0; s2 < secs.length; s2++) io.observe(secs[s2]);
   }
+
+  /* ---------- Interest form: builds an email to the club, stores nothing ---------- */
+  var CLUB = 'TradersatPrinceton@gmail.com', join = $('join');
+  join.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('jName').value.trim(), email = $('jEmail').value.trim(), year = $('jYear').value, err = $('jErr');
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !year) {
+      err.textContent = 'Please add your name, a valid email, and your class year.';
+      err.hidden = false; $('jDone').hidden = true;
+      return;
+    }
+    err.hidden = true;
+    var picks = [], boxes = join.querySelectorAll('input[name="interest"]:checked');
+    for (var b = 0; b < boxes.length; b++) picks.push(boxes[b].value);
+    var subject = 'Interest list for Spring 2027: ' + name;
+    var body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      'Class year: ' + year,
+      'Major: ' + ($('jMajor').value.trim() || 'Not given'),
+      'Interested in: ' + (picks.join(', ') || 'Not given'),
+      'Experience: ' + $('jExp').value,
+      'Notes: ' + ($('jNote').value.trim() || 'None')
+    ].join('\n');
+    $('jMsg').value = 'To: ' + CLUB + '\nSubject: ' + subject + '\n\n' + body;
+    $('jDone').hidden = false;
+    window.location.href = 'mailto:' + CLUB + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+  $('jCopy').addEventListener('click', function () {
+    var btn = this, box = $('jMsg');
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy message'; }, 1500); }
+    function fallback() { box.focus(); box.select(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.value).then(done, fallback);
+    else fallback();
+  });
 
   /* ---------- Copy buttons ---------- */
   var copies = document.querySelectorAll('.copy[data-copy]');

@@ -322,6 +322,9 @@ img.avatar { width: 100%; height: auto; object-fit: cover; border: 0; display: b
 .wall-title + .logos { margin-top: 18px; }
 .contact .emails { display: grid; gap: 16px; margin-top: 24px; }
 .contact .emails .email { margin-top: 0; }
+.contact .email code a { color: inherit; text-decoration: none; }
+.contact .email code a:hover { text-decoration: underline; }
+.sponsor-cta span { color: var(--ink-2); font-size: 15px; }
 .contact .elabel { flex-basis: 100%; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
 
 footer { padding-block: 32px 48px; color: var(--ink-2); font-size: 13px; }
@@ -339,7 +342,7 @@ footer .disc { max-width: 70ch; }
 <body>
 
 <div class="announce">
-  <div class="wrap"><span>Now meeting founding sponsors for <span class="ph">[semester]</span>.</span><a href="#sponsors">See sponsorship</a></div>
+  <div class="wrap"><span>Now meeting founding sponsors for the 2026–27 year.</span><a href="#sponsors">See sponsorship</a></div>
 </div>
 
 <nav class="nav">
@@ -487,36 +490,36 @@ footer .disc { max-width: 70ch; }
   <div class="wrap">
     <div class="sec-head">
       <div><span class="tag">Sponsors</span><h2>Back the next generation of traders.</h2></div>
-      <p class="ph">[One sentence on what sponsors get: access to members, event presence, recruiting pipeline.]</p>
+      <p>Sponsors meet students who spend their free time trading, through our resume book, talks, recruiting dinners, and trading games that carry their name.</p>
     </div>
     <div class="sponsor-why">
-      <div class="why"><b>Reach the right students</b><p class="ph">[Who our members are: majors, class years, what they study and build.]</p></div>
-      <div class="why"><b>Be in the room</b><p class="ph">[Speaker slots, sponsored trading games, resume book, office visits.]</p></div>
-      <div class="why"><b>Fund real work</b><p class="ph">[What sponsorship pays for: competition prizes, data, travel, the fund.]</p></div>
+      <div class="why"><b>Reach the right students</b><p>Members join to trade. They help run a student fund, drill probability and market making, and compete against each other in trading games.</p></div>
+      <div class="why"><b>Be in the room</b><p>Give a talk, host a dinner or coffee chats with members, or put your name on a trading game and help design it.</p></div>
+      <div class="why"><b>Get in at the start</b><p>The club is new. Firms that join this year are listed as founding sponsors.</p></div>
     </div>
     <div class="tiers">
       <article class="tier">
-        <div class="name ph">[Tier name]</div>
-        <div class="amt ph">[$ amount / year]</div>
-        <ul><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li></ul>
+        <div class="name">Silver</div>
+        <div class="amt">Pricing on request</div>
+        <ul><li>Logo on this site</li><li>Resume book each semester</li></ul>
         <a class="btn btn-sm" href="#contact">Get in touch</a>
       </article>
       <article class="tier featured">
-        <div class="name ph">[Tier name]</div>
-        <div class="amt ph">[$ amount / year]</div>
-        <ul><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li></ul>
+        <div class="name">Gold</div>
+        <div class="amt">Pricing on request</div>
+        <ul><li>Everything in Silver</li><li>A speaker or tech talk slot</li><li>A recruiting dinner or coffee chats with members</li></ul>
         <a class="btn btn-accent btn-sm" href="#contact">Get in touch</a>
       </article>
       <article class="tier">
-        <div class="name ph">[Tier name]</div>
-        <div class="amt ph">[$ amount / year]</div>
-        <ul><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li><li class="ph">[Benefit]</li></ul>
+        <div class="name">Platinum</div>
+        <div class="amt">Pricing on request</div>
+        <ul><li>Everything in Gold</li><li>Your name on a trading game, with a hand in designing it</li><li>Top logo placement on this site</li></ul>
         <a class="btn btn-sm" href="#contact">Get in touch</a>
       </article>
     </div>
     <div class="sponsor-cta">
-      <a class="btn btn-accent" href="#contact">Request the sponsorship deck</a>
-      <span class="ph">[Link the PDF deck here once it exists.]</span>
+      <a class="btn btn-accent" href="#contact">Ask about sponsorship</a>
+      <span>We reply with pricing and what each tier includes this year.</span>
     </div>
     <h3 class="wall-title">Founding sponsors</h3>
     <div class="logos">
@@ -537,8 +540,8 @@ footer .disc { max-width: 70ch; }
       <p class="ph">[One line about the board and how to reach them.]</p>
     </div>
     <div class="team">
-      <div class="member"><img class="avatar" src="team/david.jpg" alt="David Ji" width="480" height="480" loading="lazy"><b>David Ji</b><span>Co-President</span></div>
       <div class="member"><img class="avatar" src="team/taeyoung.jpg" alt="Taeyoung Kang" width="480" height="480" loading="lazy"><b>Taeyoung Kang</b><span>Co-President</span></div>
+      <div class="member"><img class="avatar" src="team/david.jpg" alt="David Ji" width="480" height="480" loading="lazy"><b>David Ji</b><span>Co-President</span></div>
     </div>
   </div>
 </section>
@@ -590,10 +593,9 @@ footer .disc { max-width: 70ch; }
     <div class="contact">
       <div>
         <h2>Talk to us.</h2>
-        <p>Sponsorship has its own inbox, so firms get a fast answer. Everything else goes to the general one.</p>
+        <p>Sponsorship, speaking, or joining. One inbox for all of it.</p>
         <div class="emails">
-          <div class="email"><span class="elabel">Sponsorship</span><code id="emailSponsor">[sponsors@domain]</code><button class="copy" type="button" data-copy="emailSponsor">Copy</button></div>
-          <div class="email"><span class="elabel">General and joining</span><code id="emailGeneral">[hello@domain]</code><button class="copy" type="button" data-copy="emailGeneral">Copy</button></div>
+          <div class="email"><code id="emailClub"><a href="mailto:TradersatPrinceton@gmail.com">TradersatPrinceton@gmail.com</a></code><button class="copy" type="button" data-copy="emailClub">Copy</button></div>
         </div>
       </div>
       <div class="socials">

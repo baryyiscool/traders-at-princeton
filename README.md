@@ -4,7 +4,7 @@ Website for Traders @ Princeton, a student-run quantitative trading club.
 The site is a single static page:
 
 - `index.html`: all the content, top to bottom (hero, Initiatives, Team, Placement, Recruitment, Sponsors, Contact).
-- `styles.css` and `site.js`: its styles and behaviour.
+- `styles.css` and `site.js`: its styles and behaviour. `index.html` loads them with a `?v=` tag; change that tag whenever you edit either file, or visitors keep the old copy for up to ten minutes.
 
 ## Editing
 

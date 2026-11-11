@@ -47,4 +47,4 @@ Traders @ Princeton is an independent student group and is not affiliated with, 
 
 ## Backup address
 
-Princeton's network flags tradersatprinceton.com as a newly registered domain until about 12 December 2026, so it may not open on campus. A copy of the site is served at https://baryyiscool.github.io/tradersatprinceton/ from the repository `baryyiscool/tradersatprinceton`. The copy is the same files without `CNAME`. It does not update by itself: after a change here, the repository owner has to copy the site across again. Once the main address opens on campus, the backup repository can be deleted.
+Princeton's network flags tradersatprinceton.com as a newly registered domain until about 12 December 2026, so it may not open on campus. A copy of the site is served at https://tradersatprinceton.github.io from the repository `tradersatprinceton/tradersatprinceton.github.io`. The copy is the same files without `CNAME`. It does not update by itself: after a change here, the repository owner has to copy the site across again. Once the main address opens on campus, the backup repository can be deleted.

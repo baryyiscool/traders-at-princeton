@@ -43,4 +43,4 @@ Traders @ Princeton is an independent student group and is not affiliated with, 
 
 `google563e53a6d16c44a8.html` proves ownership of the site to Google Search Console. Do not delete it.
 
-`brand/` holds the square logo and cover image used on the club LinkedIn page. The site does not load them.
+`brand/` holds the square logo and cover image used on the club LinkedIn page, plus the original full logo. `favicon.png`, `favicon-48.png` and `apple-touch-icon.png` are the browser tab icons, made from the same mark.

@@ -135,20 +135,20 @@ a.ext::after { content: "↗"; margin-left: .3em; font-family: var(--font-body);
 @media (max-width: 860px) { .tiers { grid-template-columns: 1fr; margin-top: 56px; } .tier + .tier { border-left: 0; border-top: 1px solid var(--line); } }
 
 /* Leadership */
-.team-group + .team-group { margin-top: 80px; }
-.team-head { display: flex; align-items: center; gap: 24px; margin-bottom: 44px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; line-height: 1.4; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.team-group + .team-group { margin-top: 64px; }
+.team-head { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; line-height: 1.4; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
 .team-head::before, .team-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 @media (max-width: 640px) { .team-group + .team-group { margin-top: 56px; } .team-head { gap: 14px; margin-bottom: 32px; font-size: 11px; letter-spacing: .14em; } }
 .team { --cols: 4; --gap: 48px; display: flex; flex-wrap: wrap; justify-content: center; gap: 64px var(--gap); }
-.member { width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); display: grid; gap: 8px; align-content: start; }
-.avatar { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; margin-bottom: 16px; }
+.member { width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); max-width: 196px; display: grid; gap: 8px; align-content: start; }
+.avatar { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; margin-bottom: 12px; }
 .avatar.initials { display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line-2); font-family: var(--font-display); font-size: 72px; letter-spacing: .02em; color: var(--ink-2); }
-.member b { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.1; letter-spacing: -0.01em; }
+.member b { font-family: var(--font-display); font-weight: 500; font-size: 27px; line-height: 1.1; letter-spacing: -0.01em; }
 .member span { font-size: 15px; color: var(--ink-2); }
 .member b a { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
 .member b a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .member b a::after { content: "↗"; margin-left: .3em; font-family: var(--font-body); font-size: .5em; vertical-align: .5em; color: var(--ink-3); }
-@media (max-width: 860px) { .team { --cols: 3; --gap: 36px; } .member b { font-size: 26px; } }
+@media (max-width: 860px) { .team { --cols: 3; --gap: 36px; } .member b { font-size: 25px; } }
 @media (max-width: 640px) { .team { --cols: 2; --gap: 20px; row-gap: 36px; } .member b { font-size: 23px; } .avatar.initials { font-size: 44px; } }
 
 /* Join panel */

@@ -44,3 +44,7 @@ Traders @ Princeton is an independent student group and is not affiliated with, 
 `google563e53a6d16c44a8.html` proves ownership of the site to Google Search Console. Do not delete it.
 
 `brand/` holds the club logo: `logo-full.png` is the original, `logo-mark.svg` is the mark on its own (T, A and P in Morse code), and `linkedin-logo.png` and `linkedin-cover.png` are the versions on the LinkedIn page. The site itself does not show the logo. `favicon.png`, `favicon-48.png` and `apple-touch-icon.png` are the browser tab icons.
+
+## Backup address
+
+Princeton's network flags tradersatprinceton.com as a newly registered domain until about 12 December 2026, so it may not open on campus. A copy of the site is served at https://baryyiscool.github.io/tradersatprinceton/ from the repository `baryyiscool/tradersatprinceton`. The copy is the same files without `CNAME`. It does not update by itself: after a change here, the repository owner has to copy the site across again. Once the main address opens on campus, the backup repository can be deleted.

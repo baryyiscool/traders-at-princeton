@@ -40,3 +40,5 @@ The domain is registered at Namecheap under the club's account. Its DNS has four
 ## Disclaimer
 
 Traders @ Princeton is an independent student group and is not affiliated with, sponsored by, or endorsed by Princeton University.
+
+`google563e53a6d16c44a8.html` proves ownership of the site to Google Search Console. Do not delete it.

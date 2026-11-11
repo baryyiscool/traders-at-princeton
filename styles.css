@@ -147,7 +147,8 @@ a.ext::after { content: "↗"; margin-left: .3em; font-family: var(--font-body);
 .member b a { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
 .member b a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .member b a::after { content: "↗"; margin-left: .3em; font-family: var(--font-body); font-size: .5em; vertical-align: .5em; color: var(--ink-3); }
-@media (max-width: 1140px) { .team-groups { grid-template-columns: minmax(0, 1fr); gap: 56px; } .team { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 1140px) { .team-groups { --g: 24px; --G: 48px; } .member b { font-size: 23px; } .member span { font-size: 14px; } }
+@media (max-width: 960px) { .team-groups { --g: 32px; grid-template-columns: minmax(0, 1fr); gap: 56px; } .team { grid-template-columns: repeat(4, minmax(0, 1fr)); } .member b { font-size: 27px; } .member span { font-size: 15px; } }
 @media (max-width: 860px) { .team-groups { --g: 28px; } .team { grid-template-columns: repeat(3, minmax(0, 1fr)); } .member b { font-size: 25px; } }
 @media (max-width: 640px) { .team-groups { --g: 20px; gap: 48px; } .team-head { gap: 14px; margin-bottom: 26px; font-size: 11px; letter-spacing: .14em; } .team { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; } .member b { font-size: 23px; } .avatar.initials { font-size: 44px; } }
 
